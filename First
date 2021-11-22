@@ -1,0 +1,23 @@
+--1 Record Counts exercise
+Select actor_id,count(distinct film_id)
+from dvd_rentals.film_actor
+group by actor_id
+order by 2 desc
+limit 1
+
+--2
+
+Select Count(Distinct fid) 
+from dvd_rentals.nicer_but_slower_film_list
+group by price
+order by 1 desc
+limit 3
+
+--3
+Select category,round(100*total_sales::numeric/sum(total_sales)over(),2) as percentage
+from dvd_rentals.sales_by_film_category
+
+--4
+Select category,round(100*count(distinct fid)/sum(count(distinct fid))over(),2)as percentage
+from dvd_rentals.film_list
+group by category
